@@ -7,8 +7,8 @@ PrefabImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 272941
-  packageName: Simple FPS Multiplayer - Photon Fusion
-  packageVersion: 2.0.12
+  productId: 267958
+  packageName: Photon Fusion
+  packageVersion: 2.0.5
   assetPath: Assets/Photon/Fusion/Runtime/Statistics/Prefabs/FusionStatsSimpleButton.prefab
-  uploadId: 765460
+  uploadId: 735720

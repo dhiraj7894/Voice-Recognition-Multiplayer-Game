@@ -3,8 +3,8 @@ guid: 25ab394f9fec45f692c631c30839e2ee
 timeCreated: 1712603842
 AssetOrigin:
   serializedVersion: 1
-  productId: 272941
-  packageName: Simple FPS Multiplayer - Photon Fusion
-  packageVersion: 2.0.12
+  productId: 267958
+  packageName: Photon Fusion
+  packageVersion: 2.0.5
   assetPath: Assets/Photon/Fusion/Runtime/Statistics/FusionStatsCanvas.cs
-  uploadId: 765460
+  uploadId: 735720
