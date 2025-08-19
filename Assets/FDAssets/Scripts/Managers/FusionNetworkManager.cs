@@ -16,9 +16,6 @@ public class FusionNetworkManager : MonoBehaviour
     /// </summary>
     public static NetworkRunner Runner { get; private set; }
 
-    [SerializeField, Tooltip("Reference to the Crazy Manager.")]
-    CrazyManager crazyManager;
-
     [SerializeField, Tooltip("The NetworkRunner prefab that will be instantiated to start a session.")]
     NetworkRunner networkRunnerPrefab;
 

@@ -123,18 +123,12 @@ public class InGameManager : NetworkBehaviour, IPlayerJoined, IPlayerLeft
     public void PlayerJoined(PlayerRef player)
     {
         // If the maximum number of players has joined, we hide the invite button.
-        if (CrazyGames.CrazySDK.IsInitialized && Runner.SessionInfo.PlayerCount == Runner.SessionInfo.MaxPlayers)
-        {
-            CrazyGames.CrazySDK.Game.HideInviteButton();
-        }
+        
     }
     public void PlayerLeft(PlayerRef player)
     {
         // When a player leaves, we can assume the maximum number of players has not been reached, so we can show the invite button again, but only if we are not in active gameplay.
-        if (CrazyGames.CrazySDK.IsInitialized && gameState != GameState.Game)
-        {
-            CrazyManager.ShowInviteButton();
-        }
+        
     }
 
     /// <summary>
@@ -315,11 +309,7 @@ public class InGameManager : NetworkBehaviour, IPlayerJoined, IPlayerLeft
             case GameState.Game:
                 
                 // The invite button is hidden when starting the game.
-                if (CrazyGames.CrazySDK.IsInitialized)
-                {
-                    CrazyGames.CrazySDK.Game.GameplayStart();
-                    CrazyGames.CrazySDK.Game.HideInviteButton();
-                }
+               
 
                 gameStateText.text = string.Empty;
 
@@ -327,14 +317,7 @@ public class InGameManager : NetworkBehaviour, IPlayerJoined, IPlayerLeft
                 break;
             case GameState.Waiting:
                 // Stops gameplay if we are in the waiting state.
-                if (CrazyGames.CrazySDK.IsInitialized)
-                {
-                    // If we have not reached the maximum number of players, so it's okay to show the invite button.
-                    if (Runner.SessionInfo.PlayerCount < Runner.SessionInfo.MaxPlayers)
-                        CrazyManager.ShowInviteButton();
-
-                    CrazyGames.CrazySDK.Game.GameplayStop();
-                }
+               
 
                 SetLocalPlayerArrowAndScore(true, false);
 
@@ -399,8 +382,7 @@ public class InGameManager : NetworkBehaviour, IPlayerJoined, IPlayerLeft
         lp.IsWinner = lp.Score == highScore;
         AudioManager.PlayerResultSFX(lp.IsWinner);
 
-        if (lp.IsWinner && CrazyGames.CrazySDK.IsInitialized)
-            CrazyGames.CrazySDK.Game.HappyTime();
+       
 
         resultsText.text = resultText;
 
@@ -441,7 +423,7 @@ public class InGameManager : NetworkBehaviour, IPlayerJoined, IPlayerLeft
     public void LeaveGame()
     {
         LoadingScreenBehaviour.Instance.Show("Returning To Main Menu");
-        CrazyGames.CrazySDK.Game.HideInviteButton();
+        
         Runner.Shutdown();
     }
 

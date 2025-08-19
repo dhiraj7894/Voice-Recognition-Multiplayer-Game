@@ -1,4 +1,3 @@
-using CrazyGames;
 using Fusion;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -163,19 +162,7 @@ public class PlayerNetworkBehaviour : NetworkBehaviour, IPlayerLeft
 
             // Sets whether or not this player is the shared mode master client.
             IsMasterClient = Runner.IsSharedModeMasterClient;
-
-            // Gets and assigns the username.
-            CrazySDK.User.GetUser(user =>
-            {
-                if (user != null)
-                {
-                    PlayerName = user.username;
-                }
-                else
-                {
-                    PlayerName = string.Empty;
-                }
-            });
+           
         }
 
         // Executes various OnChangedRender methods on spawn so this information renders properly.
