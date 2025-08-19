@@ -3,23 +3,39 @@ using Fusion.Sockets;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Collections.Unicode;
 
 [Tooltip("Implements INetworkRunnerCallbacks so various events such as playings joining and leaving will trigger different actions.")]
 public class RunnerCallbacks : MonoBehaviour, INetworkRunnerCallbacks
 {
     [Tooltip("The Spawned on the Network when a player joins the room.")]
     public NetworkObject playerPrefab;
-
+    private NetworkRunner networkRunner;
+    PlayerRef player;
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         if (runner.LocalPlayer != player)
             return;
 
-        var newPlayer = runner.Spawn(playerPrefab, position: Vector3.up, inputAuthority: player);
+        networkRunner = runner;
+        player = player;
+
+        SpwanPlayer.Instance.EnableSpwanButton(true);
+    }
+
+    private void Start()
+    {
+        SpwanPlayer.Instance.spwanBtn.onClick.AddListener(SpwanThePlayer);
+    }
+
+    public void SpwanThePlayer()
+    {
+        var newPlayer = networkRunner.Spawn(playerPrefab, position: Vector3.up, inputAuthority: player);
 
         AudioManager.AssignLocalPlayer(newPlayer.transform);
 
-        runner.SetPlayerObject(player, newPlayer);
+        networkRunner.SetPlayerObject(player, newPlayer);
+        SpwanPlayer.Instance.EnableSpwanButton(false);
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)

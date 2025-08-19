@@ -101,7 +101,7 @@ public class InGameManager : NetworkBehaviour, IPlayerJoined, IPlayerLeft
     public override void Spawned()
     {
         // Locks the cursor to the screen for easier camera movement.
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
 
         // Sets the static instance since there should only be one.
         Instance = this;
@@ -237,7 +237,7 @@ public class InGameManager : NetworkBehaviour, IPlayerJoined, IPlayerLeft
             resultsCanvasGroup.alpha = resultsAlpha;
 
         // Sets the lock state of the camera if the results should be shown or not.
-        Cursor.lockState = ShowResults ? CursorLockMode.None : CursorLockMode.Locked;
+        //Cursor.lockState = ShowResults ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     /// <summary>

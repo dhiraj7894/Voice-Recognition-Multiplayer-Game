@@ -59,7 +59,7 @@ public class PlayerNetworkBehaviour : NetworkBehaviour, IPlayerLeft
     NetworkCharacterController ncc;
 
     [SerializeField, Tooltip("Reference to the character's Animator.")]
-    Animator animator;
+    public Animator animator;
 
     const string JUMP_ANIM_PARAMETER = "Jumped";
     const string SPRINT_ANIM_PARAMETER = "Sprint";

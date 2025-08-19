@@ -50,7 +50,7 @@ public class PlayerInputBehaviour : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
-        lookValue = value.Get<Vector2>();
+        lookValue = value.Get<Vector2>() * 50;
     }
     public void OnJump(InputValue value)
     {
