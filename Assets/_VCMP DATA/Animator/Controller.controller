@@ -210,16 +210,16 @@ BlendTree:
     m_DirectBlendParameter: Weapon Type
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: b7716e3ffc9e21c4a8fe3cee118dc93a, type: 3}
-    m_Threshold: 0.5
+    m_Motion: {fileID: -203655887218126122, guid: 6ecbc383438757241849a353a6bd7dbc, type: 3}
+    m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Weapon Type
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 6ecbc383438757241849a353a6bd7dbc, type: 3}
-    m_Threshold: 1
+    m_Motion: {fileID: -203655887218126122, guid: b7716e3ffc9e21c4a8fe3cee118dc93a, type: 3}
+    m_Threshold: 2
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -228,8 +228,8 @@ BlendTree:
   m_BlendParameter: Weapon Type
   m_BlendParameterY: Idle
   m_MinThreshold: 0
-  m_MaxThreshold: 1
-  m_UseAutomaticThresholds: 1
+  m_MaxThreshold: 2
+  m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
 --- !u!206 &8276581009402217971
@@ -249,16 +249,16 @@ BlendTree:
     m_DirectBlendParameter: Idle
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 5c244e9c00875f94f970dc1eff799e50, type: 3}
-    m_Threshold: 0.5
+    m_Motion: {fileID: -203655887218126122, guid: 3787ac94fc7616440af5c62c2ba4c048, type: 3}
+    m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Idle
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 3787ac94fc7616440af5c62c2ba4c048, type: 3}
-    m_Threshold: 1
+    m_Motion: {fileID: -203655887218126122, guid: 5c244e9c00875f94f970dc1eff799e50, type: 3}
+    m_Threshold: 2
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -267,8 +267,8 @@ BlendTree:
   m_BlendParameter: Weapon Type
   m_BlendParameterY: Blend
   m_MinThreshold: 0
-  m_MaxThreshold: 1
-  m_UseAutomaticThresholds: 1
+  m_MaxThreshold: 2
+  m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
 --- !u!1107 &8973189730078337927

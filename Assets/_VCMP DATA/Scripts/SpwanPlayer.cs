@@ -6,6 +6,7 @@ public class SpwanPlayer : MonoBehaviour
 {
     public static SpwanPlayer Instance { get; private set; }
     public Button spwanBtn;
+    public GameObject selectCharacterScreen;
     private void Awake()
     {
         Instance = this;
@@ -14,7 +15,7 @@ public class SpwanPlayer : MonoBehaviour
 
     public void EnableSpwanButton(bool isTrue)
     {
-        spwanBtn.gameObject.SetActive(isTrue);
+        selectCharacterScreen.gameObject.SetActive(isTrue);
     }
 
 }

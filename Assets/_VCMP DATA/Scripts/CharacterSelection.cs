@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class CharacterSelection : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static CharacterSelection Instance { get; private set; }
+    public int characterId;
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetCharacter(int Id)
     {
-        
+        characterId = Id;
     }
 }
