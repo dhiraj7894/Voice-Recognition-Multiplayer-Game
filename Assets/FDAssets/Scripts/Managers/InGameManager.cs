@@ -2,6 +2,7 @@ using Fusion;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Tooltip("Handles the main game state and updates, controlled by the Shared Mode Master Client.")]
 public class InGameManager : NetworkBehaviour, IPlayerJoined, IPlayerLeft
@@ -69,6 +70,11 @@ public class InGameManager : NetworkBehaviour, IPlayerJoined, IPlayerLeft
     /// <summary>
     /// A local property that determines if the game results should be shown; set to false after viewing the results and closing the windows.
     /// </summary>
+    /// 
+
+
+    public Button weaponA;
+    public Button weaponB;
     public bool ShowResults
     {
         get => showResults;

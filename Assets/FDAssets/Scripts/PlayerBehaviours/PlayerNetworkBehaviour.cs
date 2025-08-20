@@ -61,7 +61,7 @@ public class PlayerNetworkBehaviour : NetworkBehaviour, IPlayerLeft
     [SerializeField, Tooltip("Reference to the character's Animator.")]
     public Animator animator;
 
-    const string JUMP_ANIM_PARAMETER = "Jumped";
+    const string JUMP_ANIM_PARAMETER = "Attack";
     const string SPRINT_ANIM_PARAMETER = "Sprint";
 
     [SerializeField, Tooltip("The run speed of the character.")]
@@ -126,6 +126,10 @@ public class PlayerNetworkBehaviour : NetworkBehaviour, IPlayerLeft
     [SerializeField, Tooltip("Reference to the manager that affects explosions.")]
     ExplodableSetBehaviour explodableManager;
     #endregion
+
+    [Networked, OnChangedRender(nameof(OnAttackChanged))]
+    public NetworkBool IsAttacking { get; set; }
+
 
     [Header("SFX Audio Sources")]
     public AudioSource jumpAS;
@@ -238,15 +242,11 @@ public class PlayerNetworkBehaviour : NetworkBehaviour, IPlayerLeft
             coyotoTime += Runner.DeltaTime;
         }
 
-        if (PlayerInputBehaviour.jumpValue > 0 && !Jumped && coyotoTime <= coyoteTimeLimit)
+        if (PlayerInputBehaviour.jumpValue > 0 && !IsAttacking)
         {
-            Jumped = true;
-
-            Vector3 v = ncc.Velocity;
-            v.y = ncc.jumpImpulse;
-            ncc.Velocity = v;
-
-            animator.SetBool(JUMP_ANIM_PARAMETER, true);
+            Debug.Log($"Jump Value: {PlayerInputBehaviour.jumpValue}");
+            IsAttacking = true;
+            RPC_DoAttack();
         }
 
         if (!Explode)
@@ -318,6 +318,8 @@ public class PlayerNetworkBehaviour : NetworkBehaviour, IPlayerLeft
         if (HasStateAuthority)
             IsMasterClient = Runner.IsSharedModeMasterClient;
     }
+
+
 #endregion
 
     #region ONCHANGEDRENDER METHODS
@@ -445,6 +447,28 @@ public class PlayerNetworkBehaviour : NetworkBehaviour, IPlayerLeft
     {
         StartingPointIndex = index;
     }
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.All, Channel = RpcChannel.Unreliable)]
+    public void RPC_DoAttack()
+    {
+        animator.SetTrigger(JUMP_ANIM_PARAMETER);
+
+        // Raycast shooting logic (from camera forward)
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, 50f))
+        {
+            Debug.Log($"Hit {hit.collider.name}");
+
+            // Example: damage if other player
+            if (hit.collider.TryGetComponent<PlayerNetworkBehaviour>(out var target))
+            {
+                // TODO: apply damage here
+            }
+        }
+
+        // Reset attack flag after doing it
+        IsAttacking = false;
+    }
     #endregion
 
     #region UNITY METHODS
@@ -479,5 +503,13 @@ public class PlayerNetworkBehaviour : NetworkBehaviour, IPlayerLeft
     {
         Explode = true;
         ExplosionCooldownTimer = TickTimer.CreateFromSeconds(Runner, explosionCooldownLength);
+    }
+    private void OnAttackChanged()
+    {
+        if (IsAttacking)
+        {
+            // could trigger sounds or effects
+            IsAttacking = false; // reset after action
+        }
     }
 }

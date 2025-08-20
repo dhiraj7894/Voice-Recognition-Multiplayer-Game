@@ -52,12 +52,14 @@ public class PlayerInputBehaviour : MonoBehaviour
     {
         lookValue = value.Get<Vector2>() * 50;
     }
-    public void OnJump(InputValue value)
+    public void OnAttack(InputValue value)
     {
+        Debug.Log("Attack: " + value.isPressed);
+
         if (jumpValue <= 0 && value.isPressed)
         {
             jumpValue = JUMP_BUFFER;
-        }
+        }        
     }
     #endregion
 

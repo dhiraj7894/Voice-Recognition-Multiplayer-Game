@@ -9,7 +9,7 @@ using static Unity.Collections.Unicode;
 public class RunnerCallbacks : MonoBehaviour, INetworkRunnerCallbacks
 {
     [Tooltip("The Spawned on the Network when a player joins the room.")]
-    public NetworkObject playerPrefab;
+    public NetworkObject[] playerPrefab;
     private NetworkRunner networkRunner;
     PlayerRef player;
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
@@ -30,7 +30,7 @@ public class RunnerCallbacks : MonoBehaviour, INetworkRunnerCallbacks
 
     public void SpwanThePlayer()
     {
-        var newPlayer = networkRunner.Spawn(playerPrefab, position: Vector3.up, inputAuthority: player);
+        var newPlayer = networkRunner.Spawn(playerPrefab[CharacterSelection.Instance.characterId], position: Vector3.up, inputAuthority: player);
 
         AudioManager.AssignLocalPlayer(newPlayer.transform);
 
