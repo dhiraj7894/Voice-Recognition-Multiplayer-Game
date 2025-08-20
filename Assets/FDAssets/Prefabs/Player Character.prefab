@@ -1906,6 +1906,7 @@ GameObject:
   - component: {fileID: 5113174844234052893}
   - component: {fileID: -5680424947023558704}
   - component: {fileID: 4033535144764462045}
+  - component: {fileID: -2729624312830446005}
   m_Layer: 6
   m_Name: Player Character
   m_TagString: Untagged
@@ -1954,6 +1955,8 @@ MonoBehaviour:
   - {fileID: 9114010046680142471}
   - {fileID: 5113174844234052893}
   - {fileID: -5680424947023558704}
+  - {fileID: 4033535144764462045}
+  - {fileID: -2729624312830446005}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &9114010046680142471
 MonoBehaviour:
@@ -2088,7 +2091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: -5680424947023558704}
-  selectedCharacterIndex: 1
+  selectedCharacterIndex: 0
   characterA: {fileID: 4882005831193612033}
   characterB: {fileID: 2923753663228818315}
   weaponIndex: 0
@@ -2101,6 +2104,28 @@ MonoBehaviour:
     weapons:
     - {fileID: 4438708866085311561}
     - {fileID: 5402789194688124853}
+--- !u!114 &-2729624312830446005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337347737783543015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b7539f91f3024ea6577c93c46d2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _CharacterId: 0
+  _WeaponId: 0
+  characterA: {fileID: 4882005831193612033}
+  characterB: {fileID: 2923753663228818315}
+  weaponsA:
+  - {fileID: 2165541185376475634}
+  - {fileID: 7133767091977525750}
+  weaponsB:
+  - {fileID: 4438708866085311561}
+  - {fileID: 5402789194688124853}
 --- !u!1 &8476280912951944784
 GameObject:
   m_ObjectHideFlags: 0

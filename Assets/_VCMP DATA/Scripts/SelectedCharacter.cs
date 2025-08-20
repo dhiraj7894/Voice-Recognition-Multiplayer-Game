@@ -1,6 +1,7 @@
+using Fusion;
 using UnityEngine;
 
-public class SelectedCharacter : MonoBehaviour
+public class SelectedCharacter : NetworkBehaviour
 {
     [System.Serializable]
     public class wepons
@@ -18,9 +19,12 @@ public class SelectedCharacter : MonoBehaviour
     [Space(10), Header("Weapon Selection")]
     public int weaponIndex = 0;
     public wepons[] weponsList;
+    
     public void Start()
     {
         selectedCharacterIndex = CharacterSelection.Instance.characterId;
+        var selection = this.GetComponent<PlayerSelection>();
+        selection.SetSelection(selectedCharacterIndex, 0 /* weapon index */);
         switch (selectedCharacterIndex)
         {
             case 0:
@@ -61,8 +65,12 @@ public class SelectedCharacter : MonoBehaviour
                 for (int j = 0; j < weponsList[i].weapons.Length; j++)
                 {
                     weponsList[i].weapons[j].SetActive(j == weaponIndex);
+
+                    var selection = this.GetComponent<PlayerSelection>();
+                    selection.SetSelection(selectedCharacterIndex, weaponIndex);
                 }
             }
         }
     }
+
 }
