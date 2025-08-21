@@ -29,6 +29,8 @@ public class PlayerInputBehaviour : MonoBehaviour
     /// </summary>
     const float JUMP_BUFFER = 8f / 60f;
 
+
+    public static bool attack;
     private void Awake()
     {
         if (Instance != null)
@@ -50,16 +52,17 @@ public class PlayerInputBehaviour : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
-        lookValue = value.Get<Vector2>() * 50;
+        lookValue = value.Get<Vector2>();
     }
     public void OnAttack(InputValue value)
     {
         Debug.Log("Attack: " + value.isPressed);
 
-        if (jumpValue <= 0 && value.isPressed)
-        {
-            jumpValue = JUMP_BUFFER;
-        }        
+        attack = value.isPressed;
+        //if (jumpValue <= 0 && value.isPressed)
+        //{
+        //    jumpValue = JUMP_BUFFER;
+        //}        
     }
     #endregion
 

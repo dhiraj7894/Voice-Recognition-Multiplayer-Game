@@ -242,9 +242,9 @@ public class PlayerNetworkBehaviour : NetworkBehaviour, IPlayerLeft
             coyotoTime += Runner.DeltaTime;
         }
 
-        if (PlayerInputBehaviour.jumpValue > 0 && !IsAttacking)
+        if (PlayerInputBehaviour.attack && !IsAttacking)
         {
-            Debug.Log($"Jump Value: {PlayerInputBehaviour.jumpValue}");
+            Debug.Log($"Jump Value: {PlayerInputBehaviour.attack}");
             IsAttacking = true;
             RPC_DoAttack();
         }

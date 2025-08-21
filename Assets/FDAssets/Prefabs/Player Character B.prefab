@@ -1707,11 +1707,13 @@ MonoBehaviour:
   camOffset: {x: 0, y: 0, z: 0}
   camDistance: 0
   camMinYPosition: 0.5
-  camRotateRate: 10
+  camRotateRate: 50
   _Explode:
     _value: 0
   explosionCooldownLength: 3
   explodableManager: {fileID: 5472115691080345871}
+  _IsAttacking:
+    _value: 0
   jumpAS: {fileID: 2224912025925436389}
   explodeAS: {fileID: 1428905011356565943}
   pickUpFlagAS: {fileID: 8670909051129208993}
